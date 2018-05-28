@@ -25,6 +25,11 @@
         <td><%= link_to 'Show', job %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.account.bids.map(&:job).include?(job) %>
+          <td>Already bidded</td>
+        <% else %>
+          <td><%= link_to 'Bid', new_bid_path(job_id: job.id) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

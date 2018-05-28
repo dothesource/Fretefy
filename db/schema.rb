@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_035306) do
+ActiveRecord::Schema.define(version: 2018_05_28_041601) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "bids", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "truck_id"
+    t.string "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_bids_on_job_id"
+    t.index ["truck_id"], name: "index_bids_on_truck_id"
   end
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,6 +82,8 @@ ActiveRecord::Schema.define(version: 2018_05_28_035306) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "bids", "jobs"
+  add_foreign_key "bids", "trucks"
   add_foreign_key "jobs", "accounts"
   add_foreign_key "jobs", "trucks"
   add_foreign_key "trucks", "accounts"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job: one
+  truck: one
+  price: MyString
+
+two:
+  job: two
+  truck: two
+  price: MyString
