@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_28_025037) do
+ActiveRecord::Schema.define(version: 2018_05_28_035306) do
 
   create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 2018_05_28_025037) do
     t.datetime "updated_at", null: false
     t.string "status"
     t.string "truck_type"
+    t.float "from_latitude"
+    t.float "from_longitude"
+    t.float "to_latitude"
+    t.float "to_longitude"
     t.index ["account_id"], name: "index_jobs_on_account_id"
     t.index ["truck_id"], name: "index_jobs_on_truck_id"
   end
