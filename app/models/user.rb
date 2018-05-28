@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :confirmable, :lockable
 
   after_create :create_account
+  has_one :account
 
   private
 

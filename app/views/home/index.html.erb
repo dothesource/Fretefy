@@ -1,1 +1,11 @@
 hey <%= current_user.try(:name)%>
+
+<br>
+
+<hr>
+Lista de caminhões:
+<% current_user.account.trucks.each do |truck| %>
+  <br>
+  <%= truck.name %>
+  <%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
