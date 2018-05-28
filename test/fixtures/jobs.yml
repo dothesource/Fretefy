@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  truck: one
+  name: MyString
+  description: MyText
+  price: MyString
+
+two:
+  account: two
+  truck: two
+  name: MyString
+  description: MyText
+  price: MyString
