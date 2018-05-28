@@ -25,5 +25,12 @@
   <%= @job.price %>
 </p>
 
+<hr>
+<h2>Bids</h2>
+<br>
+
+<%= render "bids/bids_table", bids: @job.bids %>
+
+
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

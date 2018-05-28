@@ -1,5 +1,5 @@
 class TrucksController < ApplicationController
-  before_action :set_truck, only: [:show, :edit, :update, :destroy]
+  before_action :set_truck, only: [:show, :edit, :update, :destroy, :start_job]
 
   # GET /trucks
   # GET /trucks.json
@@ -59,6 +59,19 @@ class TrucksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to trucks_url, notice: 'Truck was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  # PATCH/PUT /trucks/1/job/1/start_job
+  # PATCH/PUT /trucks/1/job/1/start_job.json
+  def start_job
+    @job = Job.find(params[:job_id])
+    Truck.transaction do
+      @job.status = :active
+      @truck.status = :on_job
+
+      @job.save
+      @truck.save
     end
   end
 

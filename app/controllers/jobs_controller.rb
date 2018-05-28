@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy, :accept_bid]
 
   # GET /jobs
   # GET /jobs.json
@@ -60,6 +60,15 @@ class JobsController < ApplicationController
       format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # PATCH/PUT /jobs/1/bids/1/accept_bid
+  # PATCH/PUT /jobs/1/bids/1/accept_bid.json
+  def accept_bid
+    # TODO: cannot accept bid if truck is on job
+    @bid = Bid.find(params[:bid_id])
+    @job.status = :ready
+    @job.truck = @bid.truck
   end
 
   private
