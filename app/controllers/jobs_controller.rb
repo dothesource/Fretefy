@@ -1,4 +1,5 @@
 class JobsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_job, only: [:show, :edit, :update, :destroy, :accept_bid]
 
   # GET /jobs
@@ -67,8 +68,16 @@ class JobsController < ApplicationController
   def accept_bid
     # TODO: cannot accept bid if truck is on job
     @bid = Bid.find(params[:bid_id])
-    @job.status = :ready
-    @job.truck = @bid.truck
+
+    respond_to do |format|
+      if @job.accept_bid(@bid)
+        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.json { render :show, status: :ok, location: @job }
+      else
+        format.html { render :edit }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

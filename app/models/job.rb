@@ -8,6 +8,17 @@ class Job < ApplicationRecord
 
   validates_presence_of :account, :name, :description
 
+  symbolize :status, :in => [:new, :ready, :in_progress, :finished, :cancelled], :methods => true
+
+  def accept_bid(bid)
+    Job.transaction do
+      @job.status = :ready
+      @job.truck = bid.truck
+
+      @job.save
+    end
+  end
+
   private
 
   def can_destroy?

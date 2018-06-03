@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :truck_id %>
-    <%= form.collection_select(:truck_id, current_user.account.trucks, :id, :name) %>
+    <%= form.collection_select(:truck_id, current_user.account.trucks, :id, :name, {}, required: true)%>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, { required: true, autocomplete:'off'} %>
   </div>
 
   <div class="actions">

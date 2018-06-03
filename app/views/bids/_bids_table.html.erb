@@ -1,28 +1,24 @@
 <table>
   <thead>
     <tr>
-      <th>Job</th>
-      <th>Truck</th>
       <th>Truck owner name</th>
-      <th>Truck owner contact</th>
+      <th>Truck owner phone</th>
       <th>Price</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
     <% bids.each do |bid| %>
       <tr>
-        <td><%= bid.job %></td>
-        <td><%= bid.truck %></td>
         <td><%= bid.truck.account.user.name %></td>
-        <td><%= bid.truck.account.contact %></td>
+        <td><%= bid.truck.account.phone %></td>
         <td><%= bid.price %></td>
         <td><%= link_to 'Show', bid %></td>
         <td><%= link_to 'Edit', edit_bid_path(bid) %></td>
         <td><%= link_to 'Destroy', bid, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% if job && job.account == current_user.account %>
-          <td><%= link_to 'Accept bid', accept_bid_job_path(job, bid) %></td></td>
+        <% if @job && @job.account == current_user.account %>
+          <td><%= link_to 'Accept bid', job_bid_accept_bid_path(@job, bid) %></td></td>
         <% end %>
       </tr>
     <% end %>

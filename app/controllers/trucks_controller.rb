@@ -1,10 +1,10 @@
 class TrucksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_truck, only: [:show, :edit, :update, :destroy, :start_job]
 
   # GET /trucks
   # GET /trucks.json
   def index
-    @trucks = Truck.all
   end
 
   # GET /trucks/1
@@ -66,12 +66,15 @@ class TrucksController < ApplicationController
   # PATCH/PUT /trucks/1/job/1/start_job.json
   def start_job
     @job = Job.find(params[:job_id])
-    Truck.transaction do
-      @job.status = :active
-      @truck.status = :on_job
 
-      @job.save
-      @truck.save
+    respond_to do |format|
+      if @truck.start_job(@job)
+        format.html { redirect_to @truck, notice: 'Truck was successfully updated.' }
+        format.json { render :show, status: :ok, location: @truck }
+      else
+        format.html { render :edit }
+        format.json { render json: @truck.errors, status: :unprocessable_entity }
+      end
     end
   end
 
