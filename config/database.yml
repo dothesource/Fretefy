@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: siga-bem-caminhoneiro_production
+  database: m4484p8jt9rj6ue6
   username: wj2011arfmzcujuh
   password: t2ttqd8rvianl2td
