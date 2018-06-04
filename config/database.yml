@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: m4484p8jt9rj6ue6
-  username: wj2011arfmzcujuh
-  password: t2ttqd8rvianl2td
+  database: heroku_6ce52f148351db6
+  username: bd39f61dc76d6c
+  password: c9912383
