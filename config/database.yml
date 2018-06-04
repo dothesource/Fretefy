@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: siga-bem-caminhoneiro_production
-  username: siga-bem-caminhoneiro
-  password: <%= ENV['SIGA-BEM-CAMINHONEIRO_DATABASE_PASSWORD'] %>
+  username: wj2011arfmzcujuh
+  password: t2ttqd8rvianl2td
