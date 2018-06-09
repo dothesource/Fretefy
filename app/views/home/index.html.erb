@@ -1,15 +1,21 @@
-<div class="container">
-  <div class="col s12">
-    hey <%= current_user.try(:name)%>
 
-    <br>
+hey <%= current_user.try(:name)%>
 
-    <hr>
-    Lista de caminhões:
-    <% current_user.account.trucks.each do |truck| %>
-      <br>
-      <%= truck.name %>
-      <%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  </div>
-</div>
+<br>
+
+<hr>
+Lista de caminhões:
+<% current_user.account.trucks.each do |truck| %>
+  <br>
+  <%= truck.name %>
+  <!-- <%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+<% end %>
+
+<div class="divider"></div>
+
+Lista de jobs:
+<% current_user.account.jobs.each do |job| %>
+  <br>
+  <%= job.name %>
+  <!-- <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+<% end %>

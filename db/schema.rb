@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_05_28_041601) do
     t.bigint "account_id"
     t.string "name"
     t.string "truck_type"
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_trucks_on_account_id"

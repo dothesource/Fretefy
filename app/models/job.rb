@@ -8,7 +8,7 @@ class Job < ApplicationRecord
 
   validates_presence_of :account, :name, :description
 
-  symbolize :status, :in => [:new, :ready, :in_progress, :finished, :cancelled], :methods => true
+  symbolize :status, :in => [:new, :ready, :in_progress, :finished, :cancelled], :methods => true, :allow_blank => true
 
   def accept_bid(bid)
     Job.transaction do

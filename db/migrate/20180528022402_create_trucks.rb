@@ -4,6 +4,7 @@ class CreateTrucks < ActiveRecord::Migration[5.2]
       t.references :account, foreign_key: true
       t.string :name
       t.string :truck_type
+      t.string :status
 
       t.timestamps
     end
