@@ -71,3 +71,7 @@ gem 'geocoder'
 gem 'symbolize'
 
 gem 'cancancan'
+
+gem 'materialize-sass'
+
+gem 'jquery-rails'
