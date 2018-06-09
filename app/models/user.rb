@@ -8,11 +8,11 @@ class User < ApplicationRecord
   after_create :create_account
   has_one :account
 
-  attr_accessor :contact
+  attr_accessor :phone
 
   private
 
   def create_account
-    Account.create(user_id: self.id, contact: contact)
+    Account.create(user_id: self.id, phone: phone)
   end
 end
