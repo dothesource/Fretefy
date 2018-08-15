@@ -4,6 +4,7 @@ class Job < ApplicationRecord
   has_many :bids
   has_many :trucks, through: :bids
 
+  before_create :set_status_new
   before_destroy :can_destroy?
 
   validates_presence_of :account, :name, :description
@@ -21,7 +22,11 @@ class Job < ApplicationRecord
 
   private
 
+  def set_status_new
+    status = :new
+  end
+
   def can_destroy?
-    status != :active || status != :done
+    status != :ready || status != :active || status != :done
   end
 end

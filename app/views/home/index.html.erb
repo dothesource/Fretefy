@@ -2,20 +2,40 @@
 hey <%= current_user.try(:name)%>
 
 <br>
-
-<hr>
-Lista de caminhões:
-<% current_user.account.trucks.each do |truck| %>
-  <br>
-  <%= truck.name %>
-  <!-- <%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %> -->
-<% end %>
-
 <div class="divider"></div>
+<div class="row">
+  <div class="col s6">
+    <h5>Lista de caminhões:</h5>
 
-Lista de jobs:
-<% current_user.account.jobs.each do |job| %>
-  <br>
-  <%= job.name %>
-  <!-- <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> -->
-<% end %>
+    <table class="highlight">
+      <thead>
+        <th>name</th>
+      </thead>
+      <tbody>
+        <% current_user.account.trucks.each do |truck| %>
+        <tr>
+          <td><%= truck.name %></td>
+          <!-- <%= link_to 'Destroy', truck, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col s6">
+    <h5>Lista de jobs:</h5>
+    <table class="highlight">
+      <thead>
+        <th>name</th>
+      </thead>
+      <tbody>
+        <% current_user.account.jobs.each do |job| %>
+        <tr>
+          <td><%= job.name %></td>
+          <!-- <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %> -->
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+  </div>
+</div>
